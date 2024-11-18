@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Video Streaming</title>
+</head>
+<body>
+    <h1>Video Streaming Page</h1>
+    <video id="videoPlayer" width="640" height="360" controls>
+        <source src="Sample.m4v" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <br>
+	<button onclick="playVideo()">Play</button>
+    <button onclick="pauseVideo()">Pause</button>
+    <button onclick="seekVideo(10)">Seek Forward 10s</button>
+    <button onclick="seekVideo(-10)">Seek Backward 10s</button>
+    <br>
+    <label for="urlInput">Enter an alternate URL:</label>
+    <input type="text" id="urlInput" placeholder="Enter video URL here">
+    <button onclick="changeSourceByUrl()">Load URL</button>
+    <script>
+        function playVideo() {
+            document.getElementById('videoPlayer').play();
+        }
+        
+        function pauseVideo() {
+            document.getElementById('videoPlayer').pause();
+        }
+        
+        function seekVideo(seconds) {
+            var video = document.getElementById('videoPlayer');
+            video.currentTime += seconds;
+        }
+        
+        function changeSourceByUrl() {
+            var video = document.getElementById('videoPlayer');
+            var newUrl = document.getElementById('urlInput').value;
+            video.src = newUrl;
+            video.load();
+            video.play();
+        }
+    </script>
+</body>
+</html>
